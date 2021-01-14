@@ -1,0 +1,27 @@
+<header>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" [routerLink]="['/main']">
+                <i class="far fa-sticky-note"></i>
+                Simple-Notes
+            </a>
+            <div class="d-flex" *ngIf="!hasLoggedIn">
+                <a class="nav-link active" [routerLink]="['/']">Login</a> 
+                <a class="nav-link active" [routerLink]="['/register']">Sign Up</a>
+            </div>
+            <div class="d-flex" *ngIf="hasLoggedIn">
+                <div class="dropdown">
+                    <img [src]="imgPath" alt="avatar" id="userBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userBtn">
+                        <li><a class="dropdown-item disabled">{{user}}</a></li>
+                        <li><a class="dropdown-item disabled">Edit Profile</a></li>
+                        <li><a class="dropdown-item disabled">Settings</a></li>
+                        <li><a class="dropdown-item" (click)="onSignOut()">Sign Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div> 
+    </nav> 
+</header>
+
+<router-outlet></router-outlet>
